@@ -21,6 +21,7 @@ section:first-child {
   width: 100%;
 }
 
+section.key-skills,
 section.work-experience,
 section.side-projects,
 section.education {
@@ -174,6 +175,18 @@ section.education {
 .keySkills .column li {
   margin-bottom: 4px;
   padding-left: 0;
+}
+
+.company-experience {
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
+.company-experience:first-child {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
 }
 
 .unicourses {
