@@ -136,8 +136,34 @@ section.education {
 .sectionContent h2 {
 	font-family: 'Roboto', Arial, sans-serif;
 	font-size: 1.15em;
-	margin-bottom: 0;
+	margin-bottom: 4px;
 	color: #333;
+}
+
+/* Company tagline */
+.company-tagline {
+	font-size: 0.85em;
+	color: #666;
+	margin-top: 0;
+	margin-bottom: 4px;
+	font-style: italic;
+}
+
+/* Company award */
+.company-award {
+	font-size: 0.85em;
+	margin-top: 0;
+	margin-bottom: 8px;
+}
+
+.company-award a {
+	color: #668cff;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.company-award a:hover {
+	text-decoration: underline;
 }
 
 /* Role title and other subDetails */
@@ -164,19 +190,21 @@ section.education {
     border-radius: 12px;
     font-size: 0.8em;
     font-style: normal;
-    margin-bottom: 4px;
-    margin-top: 2px;
+    margin-bottom: 0;
+    margin-top: 4px;
   }
 
   .subDetails.location {
     font-size: 0.8em;
     color: #888;
-    margin-bottom: 6px;
+    margin-top: 8px;
+    margin-bottom: 0;
     font-style: normal;
   }
 
   .tech-stack {
-    margin: 8px 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
   }
 
   .tech-stack .pill {
@@ -211,6 +239,12 @@ section.education {
   .subDetails.role-title strong {
     color: #555;
     font-weight: 600;
+  }
+
+  /* Add spacing when role has no location or tech-stack */
+  .role .subDetails.date + p,
+  .company-experience .subDetails.date + p {
+    margin-top: 8px;
   }
 }
 
