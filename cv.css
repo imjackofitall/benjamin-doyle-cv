@@ -7,12 +7,13 @@ html {
 }
 
 article p {
-  margin-top: -3px;
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
 section {
-	padding: 20px 0 0;
-	margin-bottom: 15px;
+	padding: 15px 0 0;
+	margin-bottom: 12px;
 }
 
 section:first-child {
@@ -26,6 +27,7 @@ section.work-experience,
 section.side-projects,
 section.education {
 	border-top: 2px solid #668cff;
+  padding-top: 12px;
 }
 
 #cv {
@@ -115,13 +117,12 @@ section.education {
 
 .sectionTitle {
 	float: left;
-	width: 25%;
+	width: 15%;
 }
 
 .sectionContent {
 	float: right;
-	width: 72.5%;
-  margin-bottom: -5px;
+	width: 85%;
 }
 
 .sectionTitle h1 {
@@ -136,6 +137,7 @@ section.education {
 .sectionContent h2 {
 	font-family: 'Roboto', Arial, sans-serif;
 	font-size: 1.15em;
+	margin-top: 0;
 	margin-bottom: 4px;
 	color: #333;
 }
@@ -145,7 +147,7 @@ section.education {
 	font-size: 0.85em;
 	color: #666;
 	margin-top: 0;
-	margin-bottom: 4px;
+	margin-bottom: 3px;
 	font-style: italic;
 }
 
@@ -153,7 +155,7 @@ section.education {
 .company-award {
 	font-size: 0.85em;
 	margin-top: 0;
-	margin-bottom: 8px;
+	margin-bottom: 6px;
 }
 
 .company-award a {
@@ -175,10 +177,21 @@ section.education {
 
 /* Enhanced job subDetails for screen */
 @media screen {
-  /* Role title styling */
-  .sectionContent h2 + .subDetails strong {
+  /* Primary job title styling for company positions */
+  .subDetails.job-title strong {
     font-size: 1em;
     color: #444;
+    font-weight: 600;
+  }
+
+  /* Role title styling within a company */
+  .subDetails.role-title {
+    font-style: normal;
+    font-size: 0.95em;
+  }
+
+  .subDetails.role-title strong {
+    color: #555;
     font-weight: 600;
   }
 
@@ -197,14 +210,14 @@ section.education {
   .subDetails.location {
     font-size: 0.8em;
     color: #888;
-    margin-top: 8px;
+    margin-top: 6px;
     margin-bottom: 0;
     font-style: normal;
   }
 
   .tech-stack {
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 6px;
+    margin-bottom: 6px;
   }
 
   .tech-stack .pill {
@@ -220,8 +233,8 @@ section.education {
 
   /* Role styling within a company */
   .role {
-    margin-top: 12px;
-    padding-top: 8px;
+    margin-top: 10px;
+    padding-top: 6px;
     border-top: 1px dashed #ccc;
   }
 
@@ -231,43 +244,37 @@ section.education {
     padding-top: 0;
   }
 
-  .subDetails.role-title {
-    font-style: normal;
-    font-size: 0.95em;
-  }
-
-  .subDetails.role-title strong {
-    color: #555;
-    font-weight: 600;
-  }
-
   /* Add spacing when role has no location or tech-stack */
   .role .subDetails.date + p,
   .company-experience .subDetails.date + p {
-    margin-top: 8px;
+    margin-top: 6px;
   }
 }
 
 .keySkills {
 	font-size: 1em;
 	color: #444;
-  margin-bottom: 20px;
 }
 
 .keySkills .row {
   display: flex;
   flex-wrap: nowrap;
   gap: 20px;
+  margin-bottom: 12px;
+}
+
+.keySkills .row:last-child {
+  margin-bottom: 0;
 }
 
 .keySkills .column {
-  flex: 1 1 33.333%;
+  flex: 1 1 50%;
   min-width: 0;
 }
 
 .keySkills .column strong {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: bold;
 }
 
@@ -278,14 +285,14 @@ section.education {
 }
 
 .keySkills .column li {
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   padding-left: 0;
 }
 
 .company-experience {
   border-top: 1px solid #668cff;
-  padding-top: 12px;
-  margin-top: 15px;
+  padding-top: 8px;
+  margin-top: 8px;
 }
 
 .company-experience:first-child {
@@ -334,8 +341,8 @@ section.education {
 /* Side project dividers */
 .side-projects .sectionContent article {
   border-top: 1px solid #668cff;
-  padding-top: 12px;
-  margin-top: 12px;
+  padding-top: 10px;
+  margin-top: 10px;
 }
 
 .side-projects .sectionContent article:first-child {
@@ -344,15 +351,21 @@ section.education {
   margin-top: 0;
 }
 
+.project-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 8px 0;
+}
+
 .project-list li {
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   color: #444;
 }
 
 .sectionContent h3 {
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 1em;
-  margin: 15px 0 5px 0;
+  margin: 12px 0 4px 0;
   color: #444;
 }
 
@@ -460,7 +473,7 @@ section.education {
   }
 
   .keySkills .column {
-    flex: 1 1 33.333%;
+    flex: 1 1 50%;
     min-width: 0;
   }
 }
@@ -673,19 +686,7 @@ section.education {
     }
 
     #headshot {
-      width: 100px;
-      float: none;
-      margin: 0 auto 15px auto;
-      padding: 0;
-      text-align: center;
-      display: block;
-    }
-
-    #headshot img {
-      width: 100%;
-      max-width: 100px;
-      background-color: transparent;
-      padding: 2px;
+      display: none;
     }
 
     #name {
