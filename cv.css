@@ -821,4 +821,10 @@ section.education {
       padding-top: 0;
       margin-top: 0;
     }
+
+    /* Page break control for print */
+    .page-break-before {
+      page-break-before: always;
+      break-before: page;
+    }
 }
