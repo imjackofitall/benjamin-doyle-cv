@@ -21,24 +21,16 @@
       display: "MDQyMzc0ODMxMg=="
     };
 
-    function decodePhone(encoded) {
-      return atob(encoded);
-    }
-
-    window.addEventListener('beforeprint', function () {
+    document.addEventListener('DOMContentLoaded', function () {
       const container = document.getElementById('phone-container');
       if (container) {
-        const phoneHref = decodePhone(phoneData.href);
-        const phoneDisplay = decodePhone(phoneData.display);
-        container.outerHTML = `<a href="${phoneHref}">${phoneDisplay}</a>`;
-      }
-    });
-
-    // Hide phone number again after printing
-    window.addEventListener('afterprint', function () {
-      const phoneLink = document.querySelector('.contact-info li.phone a');
-      if (phoneLink) {
-        phoneLink.outerHTML = '<span id="phone-container">Available on request</span>';
+        const phoneHref = atob(phoneData.href);
+        const phoneDisplay = atob(phoneData.display);
+        container.outerHTML =
+          '<a href="' + phoneHref + '">' +
+          '<span class="screen-only">Available on request</span>' +
+          '<span class="print-only">' + phoneDisplay + '</span>' +
+          '</a>';
       }
     });
   </script>
@@ -53,7 +45,7 @@
 
     <div id="name">
       <h1>Benjamin Doyle</h1>
-      <h2>Product Engineer · Brisbane, Australia</h2>
+      <h2>Engineering Leader · Healthcare Sector · Brisbane, Australia</h2>
     </div>
 
     <div id="contactDetails">
@@ -80,29 +72,27 @@
         </div>
 
         <div class="sectionContent">
-          <p>Product engineer who closes the gap between design and production. I design interfaces from
-            first principles, validate them directly with users, then build and ship the code myself, including the
-            APIs and data models underneath. I don't hand work over the wall.</p>
+          <p>Technology leader currently running engineering, architecture, analytics, and systems strategy as
+            MediCann's first technology hire. Previously Technology Director at easykind (LinkedIn Top Startups
+            #18), and Group Engineering Manager at Montu (Deloitte Tech Fast 50) leading multiple product and
+            platform teams through rapid scale. Eight-year career across high-traffic travel (Expedia) and
+            regulated healthcare.</p>
 
-          <p>Most of my recent work sits at the intersection of product design and engineering: complex workflows
-            reduced to simpler surfaces, analytics dashboards, and data-rich interfaces that make operational decisions
-            faster and clearer.</p>
+          <p>At this level I unify engineering, data, and product under a single operating model, bring
+            structure without slowing momentum, and stay in the code alongside the team when it counts. I own
+            the architecture and the delivery rhythm, partner with clinical, compliance, sales, and executive
+            stakeholders, and keep the current product shipping while modernising what sits underneath.</p>
 
-          <p>
-            At MediCann I rebuilt the marketing site in Framer, then designed and built the patient booking journey
-            and internal admin tooling in Next.js. Across all of it I took an analytics-first approach, covering
-            event tracking, operational dashboards, and the reporting layer that ties the patient-facing product
-            to business decisions.
-          </p>
+          <p>The last three years have been spent inside regulated healthcare workflows. Patient data, clinical
+            decision points, and the audit, access control, and integration constraints that come with them. I
+            make forward looking calls on AI in a regulated context, including build vs. buy vs. API, data
+            governance, and auditability, and have a strong preference for growing the engineers I
+            already have rather than defaulting to a replacement hire. I'm comfortable hiring juniors because I
+            create the space and feedback loops for them to learn fast.</p>
 
-          <p>At easykind I designed the Practitioner Portal from first principles, validated it directly with
-            clinicians, then partnered on implementation through APIs, code review, and the component patterns needed
-            to carry the design system into production.</p>
-
-          <p>I'm comfortable across the full stack, including backend and mobile, and I use AI tools as part of my
-            daily workflow focusing on designing and updating my own skills, MCPs and harness. I have a strong bias
-            toward shipping iteratively and learning over long design phases, and
-            I work best in environments where the product is still being shaped and ownership is high.</p>
+          <p>Hands-on across React, TypeScript, Node/NestJS, Vue, Go, native iOS, AWS, and GCP. Track record of
+            introducing Agile rituals to teams not used to them and translating technical complexity into
+            business language for boards, sales, and operations.</p>
         </div>
       </article>
       <div class="clear"></div>
@@ -117,39 +107,71 @@
           <div class="keySkills">
             <div class="row">
               <div class="column">
-                <strong>Full-Stack Delivery</strong>
+                <strong>Team Leadership &amp; Operating Model</strong>
                 <ul>
-                  <li>Production React, TypeScript, Next.js, APIs, and data-backed feature delivery</li>
-                  <li>End-to-end ownership from concept through release across UI and platform layers</li>
-                  <li>Shipping quickly with strong attention to states, details, performance, and maintainability</li>
+                  <li>Led multiple engineering teams (Group EM scope) and unified delivery, design, and data under
+                    a single operating model</li>
+                  <li>Hiring, performance management, mentoring managers, and managing contractor / outsourced
+                    resource as a true extension of the core team</li>
+                  <li>Comfortable hiring juniors and bringing them up the curve, because I create the space and
+                    feedback loop for them to learn fast</li>
                 </ul>
               </div>
               <div class="column">
-                <strong>Interface Design &amp; Prototyping</strong>
+                <strong>Solutions Architecture &amp; Cloud</strong>
                 <ul>
-                  <li>Figma wireframes, high-fidelity flows, and developer-ready specs</li>
-                  <li>Turning messy workflows into simple, usable product surfaces</li>
-                  <li>Rapid prototyping and design critique with PMs and stakeholders</li>
+                  <li>Lead architect across AWS and GCP, covering APIs, Postgres / Aurora-class data layers,
+                    event pipelines, mobile, and front end</li>
+                  <li>Modernising legacy components while keeping the current product shipping; documented
+                    future-state architecture</li>
+                  <li>Custom B2B / B2G integrations including direct data-warehouse connections and partner APIs</li>
                 </ul>
               </div>
             </div>
             <div class="row">
               <div class="column">
-                <strong>Dashboards, Data &amp; Components</strong>
+                <strong>Security, Compliance &amp; Reliability</strong>
                 <ul>
-                  <li>Analytics dashboards and data visualisations that make operational data clear and actionable</li>
-                  <li>Design systems and reusable component libraries built to scale</li>
-                  <li>Event tracking, data models, and APIs that connect the front end to real platform behaviour</li>
+                  <li>Three years inside regulated healthcare working with patient data, access controls, audit
+                    trails, and incident response, on top of five years on a high-traffic travel platform</li>
+                  <li>Tightened access control and system configuration to lift reliability and audit-readiness
+                    (HIPAA / SOC 2 posture)</li>
+                  <li>CI/CD, automated monitoring, and on-call practices that hold up under enterprise and
+                    government scrutiny</li>
                 </ul>
               </div>
               <div class="column">
-                <strong>Discovery, AI &amp; Shipping</strong>
+                <strong>AI in a Regulated Context</strong>
                 <ul>
-                  <li>Direct customer and operator discovery to validate workflows before building</li>
-                  <li>AI-first approach to research, prototyping, and implementation — using tools daily to move
-                    faster
-                  </li>
-                  <li>Strong bias to ship: from rough idea to production in days, not quarters</li>
+                  <li>Evaluates build vs. buy vs. API with data governance, auditability,
+                    and liability as explicit inputs</li>
+                  <li>Ships AI features into product workflows rather than running experiments, and develops
+                    existing engineers' AI capability rather than hiring around them</li>
+                  <li>Daily operator of AI tooling: custom skills, MCP servers, and agent harnesses tuned for
+                    real engineering throughput</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column">
+                <strong>Engineering Process &amp; Delivery</strong>
+                <ul>
+                  <li>Introduced Agile rituals (sprint planning, retros, pairing, code review) to teams not
+                    accustomed to them, with measurable throughput gains</li>
+                  <li>Epic-ownership model that gave engineers autonomy and clearer accountability</li>
+                  <li>Concise status reporting and metrics that give executives genuine visibility into platform
+                    and product health</li>
+                </ul>
+              </div>
+              <div class="column">
+                <strong>Cross-Functional &amp; Commercial</strong>
+                <ul>
+                  <li>Partners closely with Product, Sales, Client Services, and exec stakeholders to shape
+                    roadmap and unlock revenue</li>
+                  <li>Translates technical complexity into business language; comfortable saying no when no is the
+                    right answer</li>
+                  <li>Owns vendor selection, cloud spend trade-offs, and build vs. buy calls with cost and ROI as
+                    first-class inputs</li>
                 </ul>
               </div>
             </div>
@@ -176,16 +198,17 @@
               <span class="pill">React</span>
               <span class="pill">Salesforce</span>
             </p>
-            <p>MediCann's first technology hire. I own design, technology delivery, analytics, and systems architecture
-              end to end without a design, platform, or data team.</p>
-            <p>I rebuilt the marketing site in Framer, then designed and built the patient booking journey and internal
-              admin tooling in Next.js. Interaction flows and booking journeys were designed from scratch, then built
-              and shipped in code. Every decision is grounded in what patients need to understand, trust, and act
-              on.</p>
-            <p>In parallel I designed and built the analytics layer from zero: event tracking schemas, data models,
-              operational dashboards, and the reporting structures needed to expose drop-off, appointment flow,
-              utilisation, and commercial bottlenecks. The interface had to turn raw operational data into clear,
-              actionable signals.</p>
+            <p>MediCann's first technology hire and de facto technology lead. Own architecture, delivery, vendor
+              selection, analytics, and systems strategy end to end, partnering directly with the executive team
+              on roadmap, build vs. buy, and commercial trade-offs.</p>
+            <p>Stood up the patient-facing product and internal admin tooling on Next.js, with a marketing surface
+              in Framer. Designed the data and event model, operational dashboards, and reporting layer that expose
+              drop-off, appointment flow, utilisation, and commercial bottlenecks, converting raw operational data
+              into board-level signal.</p>
+            <p>Made the early build vs. buy vs. API calls across the stack (Salesforce, Next.js, third-party
+              integrations, AI tooling) with cost, lock-in, and regulatory posture as explicit inputs. Set the
+              foundations for security and access control appropriate to handling patient data in a clinical
+              workflow.</p>
           </article>
           <article class="company-experience">
             <h2>easykind</h2>
@@ -295,11 +318,11 @@
 
         <article>
           <h3><a href="https://motivationmap.me" target="_blank">MotivationMap.me</a> - Interactive motivation
-            mapping product</h3>
+            mapping</h3>
           <p class="subDetails"><em>Zero-to-one product: concept, interaction model, and visual design done end to end,
             then built and shipped.</em></p>
           <ul class="project-list">
-            <li>Designed from first principles — no template, no hand-off, just problem to production.</li>
+            <li>Designed from first principles. No template, no hand-off, just problem to production.</li>
             <li>Interactive data visualisation with shareable outputs, built on top of the application logic needed to
               make it genuinely useful.
             </li>
@@ -308,11 +331,12 @@
 
         <article>
           <h3><a href="https://www.shakkashuffle.com" target="_blank">ShakkaShuffle</a> - Collaborative planning
-            poker product</h3>
+            poker</h3>
           <p class="subDetails"><em>Lightweight real-time collaboration tool with a distinct visual personality, shipped
             fast.</em></p>
           <ul class="project-list">
-            <li>Took a rough idea to a live, working product in days — design, front end, and real-time back end.</li>
+            <li>Took a rough idea to a live, working product in days, covering design, front end, and real-time
+              back end.</li>
             <li>Built to be simple enough that users get it immediately, with the full-stack decisions underneath to
               make it reliable.
             </li>

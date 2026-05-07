@@ -279,14 +279,25 @@ section.education {
 }
 
 .keySkills .column ul {
-  list-style-type: none;
+  list-style: none;
   padding-left: 0;
   margin: 0;
 }
 
 .keySkills .column li {
+  position: relative;
   margin-bottom: 3px;
-  padding-left: 0;
+  padding-left: 11px;
+}
+
+.keySkills .column li::before {
+  content: "\2022";
+  position: absolute;
+  left: 2px;
+  top: 0;
+  color: #b0b0b0;
+  font-size: 0.95em;
+  line-height: inherit;
 }
 
 .company-experience {
@@ -668,10 +679,41 @@ section.education {
   }
 }
 
+/* Screen vs print visibility helpers (used by the phone link) */
+.print-only { display: none; }
+@media print {
+  .screen-only { display: none; }
+  .print-only { display: inline; }
+}
+
 @media print {
     html {
       background-color: transparent;
-      font-size: 0.85em;
+      font-size: 0.78em;
+    }
+
+    /* Tighten vertical rhythm so the resume packs onto fewer pages */
+    p {
+      margin-top: 0.4em;
+      margin-bottom: 0.4em;
+    }
+    .sectionContent {
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+    .key-skills .keySkills .row {
+      margin-bottom: 4px;
+    }
+    .key-skills .keySkills .column {
+      margin-bottom: 4px;
+    }
+    .key-skills .keySkills .column li {
+      margin-bottom: 2px;
+    }
+    .work-experience .company-experience,
+    .side-projects article {
+      padding-top: 6px;
+      margin-top: 6px;
     }
 
     #cv {
@@ -682,7 +724,7 @@ section.education {
 
     #mainDetails {
       background-color: transparent;
-      padding: 15px 10px 20px 10px;
+      padding: 12px 10px 12px 10px;
     }
 
     #headshot {
@@ -691,7 +733,7 @@ section.education {
 
     #name {
       float: none;
-      margin: 0 auto 15px auto;
+      margin: 0 auto 8px auto;
       text-align: center;
       width: 100%;
       display: block;
@@ -699,14 +741,16 @@ section.education {
 
     #name h1 {
     	font-size: 1.5em;
-      margin-bottom: -10px;
+      margin: 0 0 2px 0;
       text-align: center;
+      line-height: 1.15;
     }
 
     #name h2 {
     	font-size: 1em;
-      margin: 8px auto 15px auto;
+      margin: 0 auto;
       text-align: center;
+      line-height: 1.25;
     }
 
     #contactDetails {
@@ -726,7 +770,11 @@ section.education {
 
     #contactDetails ul li {
       display: inline-block;
-      margin: 0 10px 8px 0;
+      margin: 0 10px 0 0;
+    }
+
+    #contactDetails ul li:last-child {
+      margin-right: 0;
     }
 
     #contactDetails a {
@@ -737,6 +785,22 @@ section.education {
       display: inline-block;
       text-align: left;
       position: relative;
+    }
+
+    /* Force the contact icon backgrounds to print even when the user has
+       "Background graphics" disabled in their print dialog */
+    .contact-info li.phone a,
+    .contact-info li.phone #phone-container,
+    .contact-info li.mail a,
+    .contact-info li.github a,
+    .contact-info li.linkedin a,
+    .contact-info li.website a {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 15px;
+      padding-left: 20px;
     }
 
     #mainArea {
@@ -826,5 +890,52 @@ section.education {
     .page-break-before {
       page-break-before: always;
       break-before: page;
+    }
+
+    /* Keep logical blocks together across page breaks.
+       Note: .row is intentionally NOT in this list — letting a row split between
+       its two columns prevents large trailing whitespace at the foot of a page. */
+    .key-skills .keySkills .column,
+    .work-experience .company-experience,
+    .side-projects article,
+    .education article,
+    .sectionTitle {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Don't orphan a section heading at the bottom of a page */
+    section > article > .sectionTitle,
+    section > .sectionTitle {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    /* Headings inside experience/project blocks stay with their content */
+    .work-experience h2,
+    .side-projects h3,
+    .education h2 {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    /* Keep section titles welded to the first item beneath them so a heading
+       like "Work Experience" never dangles at the foot of a page. Also force
+       the Work Experience block to start on a fresh page since its first role
+       is too tall to ever cohabit with the bottom of page 1 */
+    .work-experience {
+      page-break-before: always;
+      break-before: page;
+    }
+    .side-projects .sectionContent article:first-child,
+    .education .sectionContent article:first-child {
+      page-break-before: avoid;
+      break-before: avoid;
+    }
+
+    /* Avoid widows/orphans within paragraphs */
+    p {
+      orphans: 3;
+      widows: 3;
     }
 }
